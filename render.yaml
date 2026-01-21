@@ -1,0 +1,131 @@
+services:
+  # Django Backend API
+  - type: web
+    name: nexcart-backend
+    env: python
+    region: oregon
+    plan: starter
+    branch: main
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn core.config.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.config.settings.prod
+      - key: DEBUG
+        value: False
+      
+      # Security Keys (Auto-generated or Manual)
+      - key: SECRET_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      
+      # Database - Use External Neon Database
+      - key: DATABASE_URL
+        sync: false
+      
+      # Redis - Upstash or Redis Cloud
+      - key: REDIS_URL
+        sync: false
+      
+      # Django Configuration
+      - key: ALLOWED_HOSTS
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: CSRF_TRUSTED_ORIGINS
+        sync: false
+      
+      # OAuth2 Providers (Optional)
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: DISCORD_CLIENT_ID
+        sync: false
+      - key: DISCORD_CLIENT_SECRET
+        sync: false
+      - key: MICROSOFT_CLIENT_ID
+        sync: false
+      - key: MICROSOFT_CLIENT_SECRET
+        sync: false
+      
+      # Payment Gateway (Optional)
+      - key: MESOMB_APP_KEY
+        sync: false
+      - key: MESOMB_ACCESS_KEY
+        sync: false
+      - key: MESOMB_SECRET_KEY
+        sync: false
+      
+      # Media Storage (Optional)
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_SECRET
+        sync: false
+      
+      # Email Configuration (Optional)
+      - key: EMAIL_HOST
+        value: smtp.gmail.com
+      - key: EMAIL_PORT
+        value: 587
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: DEFAULT_FROM_EMAIL
+        sync: false
+
+  # Celery Worker (Optional - for background tasks)
+  # Uncomment if you need async task processing
+  # - type: worker
+  #   name: nexcart-celery-worker
+  #   env: python
+  #   region: oregon
+  #   plan: starter
+  #   branch: main
+  #   buildCommand: "pip install -r requirements.txt"
+  #   startCommand: "celery -A core.config worker -l info"
+  #   envVars:
+  #     - key: DJANGO_SETTINGS_MODULE
+  #       value: core.config.settings.prod
+  #     - key: DATABASE_URL
+  #       sync: false
+  #     - key: REDIS_URL
+  #       sync: false
+  #     - key: SECRET_KEY
+  #       sync: false
+  #     - key: CLOUDINARY_CLOUD_NAME
+  #       sync: false
+  #     - key: CLOUDINARY_API_KEY
+  #       sync: false
+  #     - key: CLOUDINARY_SECRET
+  #       sync: false
+
+  # Celery Beat (Optional - for scheduled tasks)
+  # Uncomment if you need periodic task scheduling
+  # - type: worker
+  #   name: nexcart-celery-beat
+  #   env: python
+  #   region: oregon
+  #   plan: starter
+  #   branch: main
+  #   buildCommand: "pip install -r requirements.txt"
+  #   startCommand: "celery -A core.config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler"
+  #   envVars:
+  #     - key: DJANGO_SETTINGS_MODULE
+  #       value: core.config.settings.prod
+  #     - key: DATABASE_URL
+  #       sync: false
+  #     - key: REDIS_URL
+  #       sync: false
+  #     - key: SECRET_KEY
+  #       sync: false
+
+# ❌ DATABASE SECTION REMOVED
+# We're using external Neon PostgreSQL instead of Render's database
+# No databases section needed - just set DATABASE_URL in environment variables

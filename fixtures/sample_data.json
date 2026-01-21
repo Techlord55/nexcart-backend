@@ -1,0 +1,142 @@
+[
+  {
+    "model": "products.category",
+    "pk": "1e1a0ae7-0c9f-40ef-b21a-8f8c9d8e1a0b",
+    "fields": {
+      "name": "Electronics",
+      "slug": "electronics",
+      "description": "Electronic devices and gadgets",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": "2f31b080-36a7-4d32-bde5-9c3d8e2b1c0a",
+    "fields": {
+      "name": "Clothing",
+      "slug": "clothing",
+      "description": "Fashion and apparel",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": "b58291e8-7560-49f2-9159-8d4e3f2c1d0b",
+    "fields": {
+      "name": "Books",
+      "slug": "books",
+      "description": "Books and reading materials",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": "e580388a-acf6-4302-913a-9e5f4g3d2e1c",
+    "fields": {
+      "name": "Home & Garden",
+      "slug": "home-garden",
+      "description": "Home and garden essentials",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "a1b2c3d4-e5f6-4789-a0b1-c2d3e4f5g6h7",
+    "fields": {
+      "name": "Wireless Bluetooth Headphones",
+      "slug": "wireless-bluetooth-headphones",
+      "description": "High-quality wireless headphones with active noise cancellation, 30-hour battery life, and premium sound quality.",
+      "price": "89.99",
+      "category": "1e1a0ae7-0c9f-40ef-b21a-8f8c9d8e1a0b",
+      "stock": 50,
+      "is_available": true,
+      "is_featured": true,
+      "created_at": "2024-01-15T10:30:00Z",
+      "updated_at": "2024-01-15T10:30:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "b2c3d4e5-f6g7-5890-b1c2-d3e4f5g6h7i8",
+    "fields": {
+      "name": "Smart LED TV 55 inch",
+      "slug": "smart-led-tv-55-inch",
+      "description": "4K Ultra HD Smart TV with built-in streaming apps, HDR support, and voice control.",
+      "price": "499.99",
+      "category": "1e1a0ae7-0c9f-40ef-b21a-8f8c9d8e1a0b",
+      "stock": 25,
+      "is_available": true,
+      "is_featured": true,
+      "created_at": "2024-01-15T11:00:00Z",
+      "updated_at": "2024-01-15T11:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "c3d4e5f6-g7h8-6901-c2d3-e4f5g6h7i8j9",
+    "fields": {
+      "name": "Men's Cotton T-Shirt",
+      "slug": "mens-cotton-tshirt",
+      "description": "Comfortable 100% cotton t-shirt, available in multiple colors. Perfect for casual wear.",
+      "price": "19.99",
+      "category": "2f31b080-36a7-4d32-bde5-9c3d8e2b1c0a",
+      "stock": 100,
+      "is_available": true,
+      "is_featured": false,
+      "created_at": "2024-01-15T11:30:00Z",
+      "updated_at": "2024-01-15T11:30:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "d4e5f6g7-h8i9-7012-d3e4-f5g6h7i8j9k0",
+    "fields": {
+      "name": "Women's Denim Jacket",
+      "slug": "womens-denim-jacket",
+      "description": "Classic denim jacket with modern fit. Durable and stylish for all seasons.",
+      "price": "59.99",
+      "category": "2f31b080-36a7-4d32-bde5-9c3d8e2b1c0a",
+      "stock": 40,
+      "is_available": true,
+      "is_featured": true,
+      "created_at": "2024-01-15T12:00:00Z",
+      "updated_at": "2024-01-15T12:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "e5f6g7h8-i9j0-8123-e4f5-g6h7i8j9k0l1",
+    "fields": {
+      "name": "Python Programming Book",
+      "slug": "python-programming-book",
+      "description": "Comprehensive guide to Python programming for beginners and intermediate developers.",
+      "price": "34.99",
+      "category": "b58291e8-7560-49f2-9159-8d4e3f2c1d0b",
+      "stock": 75,
+      "is_available": true,
+      "is_featured": false,
+      "created_at": "2024-01-15T12:30:00Z",
+      "updated_at": "2024-01-15T12:30:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": "f6g7h8i9-j0k1-9234-f5g6-h7i8j9k0l1m2",
+    "fields": {
+      "name": "LED Desk Lamp",
+      "slug": "led-desk-lamp",
+      "description": "Adjustable LED desk lamp with touch controls, USB charging port, and multiple brightness levels.",
+      "price": "29.99",
+      "category": "e580388a-acf6-4302-913a-9e5f4g3d2e1c",
+      "stock": 60,
+      "is_available": true,
+      "is_featured": false,
+      "created_at": "2024-01-15T13:00:00Z",
+      "updated_at": "2024-01-15T13:00:00Z"
+    }
+  }
+]

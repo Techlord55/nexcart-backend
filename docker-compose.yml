@@ -1,0 +1,65 @@
+﻿# Version is omitted as it is obsolete for modern Docker
+services:
+  # Django Backend
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn core.config.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # This tells Docker to pull the values from your .env file automatically
+      - DEBUG=${DEBUG}
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+
+  # Celery Worker (Processes background tasks via Upstash)
+  celery:
+    build: .
+    command: celery -A core worker -l info
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+
+  # Celery Beat (Schedules tasks)
+  celery-beat:
+    build: .
+    command: celery -A core beat -l info
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+
+  # Next.js Frontend
+  frontend:
+    build:
+      context: ../../../frontends/nex-cart/nex-cart-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+    depends_on:
+      - backend
+
+volumes:
+  static_volume:
+  media_volume:
