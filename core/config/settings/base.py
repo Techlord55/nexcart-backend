@@ -15,7 +15,15 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'change-me-in-production')
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,.onrender.com').split(',')
+# Parse ALLOWED_HOSTS from environment or use defaults
+ALLOWED_HOSTS_STR = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1')
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',')]
+
+# Always allow Render domains in production
+if not DEBUG:
+    ALLOWED_HOSTS.extend(['nexcart-backend-iv3h.onrender.com', '.onrender.com'])
+    # Remove duplicates
+    ALLOWED_HOSTS = list(set(ALLOWED_HOSTS))
 
 # Application definition
 INSTALLED_APPS = [
