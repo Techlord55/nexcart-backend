@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'change-me-in-production')
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,.onrender.com').split(',')
 
 # Application definition
 INSTALLED_APPS = [
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'apps.products',
     'apps.orders',
     'apps.payments',
-    'apps.recommendations',
+    # 'apps.recommendations',  # Disabled - requires more RAM (upgrade to paid plan)
 ]
 
 MIDDLEWARE = [

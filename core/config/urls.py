@@ -19,7 +19,8 @@ urlpatterns = [
     path('api/', include('apps.products.urls')),
     path('api/', include('apps.orders.urls')),
     path('api/', include('apps.payments.urls')),
-    path('api/', include('apps.recommendations.urls')),
+   # The free tier (512MB RAM) is insufficient for sklearn/scipy. You need:
+   # path('api/', include('apps.recommendations.urls')),
 ]
 
 # Serve media files in development
