@@ -21,6 +21,19 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Disable HTTPS redirect in development
 SECURE_SSL_REDIRECT = False
 
+# ==================== CLOUDINARY STORAGE ====================
+# Keep using Cloudinary even in development
+# This ensures consistent behavior between dev and production
+# Images will be uploaded to Cloudinary, not stored locally
+
+# Cloudinary settings are inherited from base.py
+# DEFAULT_FILE_STORAGE is already set to 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# If you want to test with local storage during development, uncomment:
+# DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+# But this is NOT recommended as it creates inconsistency with production
+# ============================================================
+
 # ==================== REDIS FIX ====================
 # Use in-memory cache instead of Redis in development
 # This prevents connection errors when Redis is not running

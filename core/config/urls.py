@@ -23,9 +23,9 @@ urlpatterns = [
    # path('api/', include('apps.recommendations.urls')),
 ]
 
-# Serve media files in development
+# Serve static files in development
+# Media files are served by Cloudinary, not locally
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     
     # Django Debug Toolbar URLs
