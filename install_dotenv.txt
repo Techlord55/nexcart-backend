@@ -1,0 +1,4 @@
+# IMPORTANT: Run this command to install python-dotenv
+# This is needed to load .env files in standalone scripts
+
+pip install python-dotenv
